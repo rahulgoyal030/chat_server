@@ -1,0 +1,26 @@
+body
+{
+   background-color: 	rgb(10, 211, 246);
+   padding: 0;
+    margin: 0;
+}
+
+
+#message,#username{
+    /*position: absolute;*/
+	width: 300px;
+	height: 35px;
+	
+}
+#send,#userSubmit
+{
+	/*position: absolute;*/
+	height: 40px;
+	width: 80px;
+	/*left: 305px;*/
+    background : transparent ;
+    border: 1px solid blue;
+
+}
+
+
