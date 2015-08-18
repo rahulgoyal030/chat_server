@@ -31,7 +31,7 @@
 
 	<script>
 	  console.log("hrlloo")
-    $('#chatbox').fadeOut();
+  //  $('#chatbox').fadeOut();
 
 
     $(document).ready(function  () {
@@ -40,7 +40,7 @@
 
       $('#user').submit(function(e){
         
-
+        e.preventDefault();
         if($('#username').val()==' '||$('#username').val()=="")
         {
           console.log("username shoul be type");
@@ -52,19 +52,22 @@
 
 
         socket.emit('new user', $('#username').val(), function(data){
-
+  
               if (data) {
                   $('#login').fadeOut();
                   $('#chatbox').fadeIn();
+                  console.log(" here in  new ");
               };
-
+                  
 
         });
 
         $('#username').val('');   // this will clear the input field
       });
 
-      $('#messageBox').submit(function(){
+      $('#messageBox').submit(function(e){
+
+        e.preventDefault();
         socket.emit('chat message', $('#message').val(),function(data){
 
               console.log(data , "chat message check ")
@@ -73,7 +76,7 @@
         
         $('#message').val('');
 
-        socket.on('new message', function(dat){
+        socket.on('new message', function(data){
 
          $('#chat').append('<span class="normal"><b>'+data.nickname+':-</b>'+data.msg+"</span><Br>");
 
