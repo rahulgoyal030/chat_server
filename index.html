@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>chat_server</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+
+
+
+</head>
+<body>
+<div id="login">
+<form  name="user" id="user" action="" >
+  <input type="text" id="username" required>
+  <button type="submit" id="userSubmit">submit</button>
+</form>  
+
+</div>
+
+<div id="chatbox">
+  <form action="/"  class="chatArea" name="messageBox" id="messageBox">
+    <input id="message" name="message" placeholder="write ur message here ">
+    <button  type="submit" name="send"  id="send"  >send</button>
+    <br>
+    <p  id="name"></p><p id="chat"></p>
+  </form>
+</div>
+
+<script type="text/javascript"> console.log("testing ");</script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+
+	<script>
+	  console.log("hrlloo")
+    $('#chatbox').fadeOut();
+
+
+    $(document).ready(function  () {
+      var socket = io();
+
+
+      $('#user').submit(function(e){
+        
+
+        if($('#username').val()==' '||$('#username').val()=="")
+        {
+          console.log("username shoul be type");
+
+          alert("invalid user name")
+          return false;
+
+        } 
+
+
+        socket.emit('new user', $('#username').val(), function(data){
+
+              if (data) {
+                  $('#login').fadeOut();
+                  $('#chatbox').fadeIn();
+              };
+
+
+        });
+
+        $('#username').val('');   // this will clear the input field
+      });
+
+      $('#messageBox').submit(function(){
+        socket.emit('chat message', $('#message').val(),function(data){
+
+              console.log(data , "chat message check ")
+
+        });
+        
+        $('#message').val('');
+
+        socket.on('new message', function(dat){
+
+         $('#chat').append('<span class="normal"><b>'+data.nickname+':-</b>'+data.msg+"</span><Br>");
+
+        console.log(" server msg" , data.nickname , data.msg)
+      });
+    
+        console.log('message: in index ' );
+         return false;
+       });
+    });
+ 		 
+	</script>
+	
+
+
+
+</body>
+</html>
