@@ -78,14 +78,17 @@
 
         socket.on('user list', function(data)
         {
-            console.log(" users list is this")
-        })
+            console.log(" users list is this" , data )
+        });
 
         socket.on('new message', function(data){
 
+         for(x in data)
+         console.log(" ur msg is " ,data.msg); 
+
          $('#chat').append('<span class="normal"><b>'+data.nickname+':-</b>'+data.msg+"</span><Br>");
 
-        console.log(" server msg" , data.nickname , data.msg)
+       // console.log(" server msg" , data.nickname , data.msg)
       });
     
         console.log('message: in index ' );
