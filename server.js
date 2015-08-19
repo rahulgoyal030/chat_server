@@ -28,6 +28,8 @@ io.sockets.on('connection', function(socket){
 
           user[socket.nickname]= socket;
 
+          updateUsers();
+
           console.log(" socket name" , socket.nickname);
           for(x in user)
           {
@@ -47,6 +49,12 @@ io.sockets.on('connection', function(socket){
           io.sockets.emit('new message', {nickname: socket.nickname , msg:data});
 
   });
+
+
+    function  updateUsers() {
+      io.sockets.emit('user list', Object.keys(user));
+      console.log(" users list is " , Object.keys(user));
+    }
 });
 
 http.listen(3000, function(){

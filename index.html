@@ -76,6 +76,11 @@
         
         $('#message').val('');
 
+        socket.on('user list', function(data)
+        {
+            console.log(" users list is this")
+        })
+
         socket.on('new message', function(data){
 
          $('#chat').append('<span class="normal"><b>'+data.nickname+':-</b>'+data.msg+"</span><Br>");
