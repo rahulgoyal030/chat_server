@@ -52,7 +52,7 @@ io.sockets.on('connection', function(socket){
 
 
     function  updateUsers() {
-      io.sockets.emit('user list', Object.keys(user));
+      io.sockets.emit('userlist', Object.keys(user));
       console.log(" users list is " , Object.keys(user));
     }
 });
