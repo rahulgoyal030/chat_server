@@ -37,8 +37,9 @@ io.sockets.on('connection', function(socket){
           {
              console.log(x);
           }
+          callback(true);
      }
-     callback(true);
+     
     
   })
 
@@ -54,8 +55,10 @@ io.sockets.on('connection', function(socket){
 
 
     function  updateUsers() {
-      io.sockets.emit('userlist', Object.keys(user));
       console.log(" users list is " , Object.keys(user));
+      io.sockets.emit('userlist', Object.keys(user));
+
+      
     }
 
 

@@ -79,12 +79,15 @@
         
         $('#message').val('');
 
-        socket.on('userlist', function(data)
+        socket.on('userlist', function(data)     // userlist   active users
         {
-            console.log(" users list is this" , data )
+
+            console.log(" users list is this" , data );
+            alert("new");
+            
         });
 
-        socket.on('new message', function(data){
+        socket.on('new message', function(data){                  // every time new messgae arrived
 
          for(x in data)
          console.log(" ur msg is " ,data.msg); 
