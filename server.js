@@ -17,8 +17,10 @@ io.sockets.on('connection', function(socket){
 
   socket.on('new user', function(data,callback){
 
-     if(data in user)
+     if(data in user){
+      callback= false;
       return false;
+     }
      else
      {
 
@@ -48,13 +50,16 @@ io.sockets.on('connection', function(socket){
 
           io.sockets.emit('new message', {nickname: socket.nickname , msg:data});
 
-  });
+    })
 
 
     function  updateUsers() {
       io.sockets.emit('userlist', Object.keys(user));
       console.log(" users list is " , Object.keys(user));
     }
+
+
+
 });
 
 http.listen(3000, function(){
