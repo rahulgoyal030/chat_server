@@ -28,16 +28,18 @@ io.sockets.on('connection', function(socket){
           
           socket.nickname=data;
 
-          user[socket.nickname]= socket;
+          user[socket.nicrakname]= socket;
 
-          updateUsers();
+          
 
           console.log(" socket name" , socket.nickname);
           for(x in user)
           {
              console.log(x);
           }
+
           callback(true);
+           updateUsers();
      }
      
     
@@ -49,7 +51,9 @@ io.sockets.on('connection', function(socket){
 
     console.log(" in server  socket.on" , socket.nickname , "  data is  " , data);
 
-          io.sockets.emit('new message', {nickname: socket.nickname , msg:data});
+         // io.sockets.emit('new message', {nickname: socket.nickname , msg:data});
+           user[socket.nickname].emit('new message', {nickname: socket.nickname , msg:data});   // checking for personal message
+
 
     })
 
