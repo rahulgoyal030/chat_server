@@ -28,19 +28,25 @@ io.sockets.on('connection', function(socket){
           
           socket.nickname=data;
 
-          user[socket.nicrakname]= socket;
+          user[socket.nickname]= socket;
+          io.sockets.emit('user data', Object.keys(user));
 
           
 
           console.log(" socket name" , socket.nickname);
+          
           for(x in user)
           {
              console.log(x);
           }
 
-          callback(true);
+          
            updateUsers();
+       //    io.sockets.emit('user data', Object.keys(user));
+       console.log(" we are reaching here")
+           callback(true);
      }
+
      
     
   })
@@ -51,8 +57,10 @@ io.sockets.on('connection', function(socket){
 
     console.log(" in server  socket.on" , socket.nickname , "  data is  " , data);
 
-         // io.sockets.emit('new message', {nickname: socket.nickname , msg:data});
-           user[socket.nickname].emit('new message', {nickname: socket.nickname , msg:data});   // checking for personal message
+         io.sockets.emit('new message', {nickname: socket.nickname , msg:data});
+          // user[socket.nickname].emit('new message', {nickname: socket.nickname , msg:data});   // checking for personal message
+
+       //io.sockets.emit('user data', Object.keys(user));
 
 
     })
@@ -60,7 +68,11 @@ io.sockets.on('connection', function(socket){
 
     function  updateUsers() {
       console.log(" users list is " , Object.keys(user));
-      io.sockets.emit('userlist', Object.keys(user));
+   
+     
+      io.sockets.emit('user data', Object.keys(user));
+
+      console.log("emitted")
 
       
     }

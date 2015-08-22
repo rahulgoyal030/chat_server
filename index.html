@@ -30,7 +30,7 @@
 <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 
 	<script>
-	  console.log("helloo freat i  am making changes")
+	//  console.log("helloo great i  am making changes")
   //  $('#chatbox').fadeOut();
 
 
@@ -68,6 +68,17 @@
         $('#username').val('');   // this will clear the input field
       });
 
+
+      socket.on('user data', function(data)     // userlist   active users
+        {
+            
+
+            console.log(" users list is this" , data );
+           // alert("new");
+            
+        });
+
+
       $('#messageBox').submit(function(e){
 
         e.preventDefault();
@@ -79,14 +90,6 @@
         
         $('#message').val('');
 
-        socket.on('userlist', function(data)     // userlist   active users
-        {
-            
-
-            console.log(" users list is this" , data );
-            alert("new");
-            
-        });
 
         socket.on('new message', function(data){                  // every time new messgae arrived
 
