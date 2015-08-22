@@ -16,6 +16,13 @@
 
 </div>
 
+<div id="activeUsers">
+
+  <p id="active"> </p>
+    
+
+</div>
+
 <div id="chatbox">
   <form action="/"  class="chatArea" name="messageBox" id="messageBox">
     <input id="message" name="message" placeholder="write ur message here ">
@@ -73,8 +80,19 @@
         {
             
 
-            console.log(" users list is this" , data );
+           // console.log(" users list is this" , data );
+            var str = ' ';
+            for(var i=0;i<data.length;i++)
+             {
+               // $('#active').append('<a href="#" >' + data[i]  + '</a><br>');
+                //console.log( "users are" ,x.value);
+
+                str += '<a href="#" >' + data[i]  + '</a><br>';
+             }
            // alert("new");
+            $("#active").html(str);
+            console.log(str);
+
             
         });
 

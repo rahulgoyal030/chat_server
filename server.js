@@ -6,6 +6,9 @@ var io = require('socket.io')(http);
 
 app.use(express.static(__dirname+ '/public'));
 app.get('/', function(req, res){
+
+  checking();
+
   res.sendfile(__dirname + '/index.html');
 });
 
@@ -75,6 +78,10 @@ io.sockets.on('connection', function(socket){
       console.log("emitted")
 
       
+    }
+
+    function checking(){
+      console(" caliing can be done ");
     }
 
 

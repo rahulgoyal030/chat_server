@@ -24,3 +24,13 @@ body
 }
 
 
+#activeUsers{
+	position: absolute;
+	left: 470px;
+	
+	color: blue;
+	font-size: 25px;
+
+
+}
+
