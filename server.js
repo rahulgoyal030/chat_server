@@ -7,8 +7,20 @@ var io = require('socket.io')(http);
 app.use(express.static(__dirname+ '/public'));
 app.get('/', function(req, res){
 
+  res.sendfile(__dirname+"/index.html");
+
   
 });
+
+// var emoji = require('node-emoji');
+// console.log(emoji.get('coffee')); // returns the emoji code for coffee (displays emoji on terminals that support it) 
+// console.log(emoji.which(emoji.get('coffee'))); // returns coffee 
+// console.log(emoji.get(':fast_forward:')); // also supports github flavored markdown emoji (http://www.emoji-cheat-sheet.com/) 
+// console.log(emoji.emojify('I :heart: :coffee:!')); // 
+
+var emoji = require('node-emoji').emoji;
+console.log(" it is  a emoji" , emoji.heart); // returns the emoji code for coffee (displays emoji on terminals that support it) 
+console.log(emoji.fast_forward); // retreive
 
 var user={};
 
